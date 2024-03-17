@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "inventix"
+version = "0.1.0"
+description = ""
+authors = ["ZeroTwo-M1000 <BioArtex@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+loguru = "^0.7.2"
+fastapi = {extras = ["all"], version = "^0.110.0"}
+pyjwt = "^2.8.0"
+prisma = "^0.12.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
