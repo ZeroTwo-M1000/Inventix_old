@@ -4,6 +4,7 @@ import axios from "axios"
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
+        // TODO: 404
         {
             path: "/auth",
             name: "auth",
@@ -27,7 +28,7 @@ const router = createRouter({
                 await axios
                     .get("/auth/me")
                     .then((response) => {
-                        if (response.data) {
+                        if (response.data.success) {
                             next()
                         } else {
                             next({ name: "auth" })
@@ -38,7 +39,10 @@ const router = createRouter({
                     })
             }
         }
-    ]
+    ],
+    scrollBehavior() {
+        return { top: 0 }
+    }
 })
 
 export default router

@@ -34,15 +34,21 @@ class Auth:
         auth: Optional[HTTPAuthorizationCredentials] = Depends(get_bearer_token),
     ):
         if auth is None:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token"
+            )
         try:
             name = Auth.decode_token(auth.credentials)["sub"]
         except:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token"
+            )
         user = await AuthRepo.get_user_by_name(name)
 
         if user is None:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token"
+            )
 
         else:
             return user

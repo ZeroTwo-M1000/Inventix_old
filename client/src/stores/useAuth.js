@@ -20,8 +20,9 @@ export const useAuth = defineStore("auth", () => {
                 password: password
             })
             .then((response) => {
-                if (response.data.access_token) {
-                    localStorage.setItem("token", response.data.access_token)
+                console.log(response.data)
+                if (response.data.success) {
+                    localStorage.setItem("token", response.data.data.access_token)
                     error.value = ""
                     location.reload()
                 } else {

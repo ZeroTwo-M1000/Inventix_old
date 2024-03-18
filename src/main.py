@@ -11,6 +11,8 @@ from core.routers.media_router import media_router
 def init_app():
     app = FastAPI()
 
+    # TODO: logger
+
     app.mount("/assets", StaticFiles(directory="build/assets"), name="static")
 
     app.add_middleware(
