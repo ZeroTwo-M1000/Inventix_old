@@ -28,11 +28,32 @@ export default {
 
             },
 
+            spacing: {
+                xl: "40px",
+                lg: "20px",
+                md: "10px"
+            },
+            padding: {
+                xl: "40px",
+                lg: "20px",
+
+                "3": "10px",
+                "3.5": "12px",
+                "4": "16px",
+                "8": "30px"
+            },
             borderRadius: {
                 xl: "34px",
                 lg: "19px",
                 md: "14px",
                 sm: "9px"
+            },
+            fontSize: {
+                "2xl": "23px",
+                xl: "20px",
+                lg: "16px",
+                md: "14px",
+                sm: "12px"
             }
         }
     },

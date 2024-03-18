@@ -17,14 +17,16 @@ const props = defineProps({
 })
 
 const colors = {
-    grey: "#69696950"
+    grey: "#69696950",
+    blue: "#4a84f8",
+    none: "transparent"
 }
 
 const style = computed(() => {
     return {
         background: "linear-gradient(to right bottom, " + colors[props.color] + " 0%, rgba(0, 0, 0, 0) 100%)",
         borderRadius: props.radius + "px",
-        padding: "padding" in props ? props.padding : "1px"
+        padding: props.padding ? props.padding + "px" : "1px"
     }
 })
 </script>
@@ -38,7 +40,6 @@ const style = computed(() => {
 <style lang="scss" scoped>
 .border {
     z-index: -1;
-    padding: 1px;
     border: none;
 }
 </style>

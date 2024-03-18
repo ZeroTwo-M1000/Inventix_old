@@ -4,11 +4,12 @@ import axios from "axios"
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
-        // TODO: 404
         {
             path: "/auth",
             name: "auth",
-            component: () => import("@/views/AuthView.vue"),
+            components: {
+                auth: () => import("@/views/AuthView.vue")
+            },
             beforeEnter: async (to, from, next) => {
                 await axios
                     .get("/auth/me")
@@ -38,6 +39,87 @@ const router = createRouter({
                         next({ name: "auth" })
                     })
             }
+        },
+        {
+            path: "/statistic",
+            name: "statistic",
+            component: () => import("@/views/StatisticView.vue"),
+            beforeEnter: async (to, from, next) => {
+                await axios
+                    .get("/auth/me")
+                    .then((response) => {
+                        if (response.data.success) {
+                            next()
+                        } else {
+                            next({ name: "auth" })
+                        }
+                    })
+                    .catch((e) => {
+                        next({ name: "auth" })
+                    })
+            }
+        },
+        {
+            path: "/news",
+            name: "news",
+            component: () => import("@/views/NewsView.vue"),
+            beforeEnter: async (to, from, next) => {
+                await axios
+                    .get("/auth/me")
+                    .then((response) => {
+                        if (response.data.success) {
+                            next()
+                        } else {
+                            next({ name: "auth" })
+                        }
+                    })
+                    .catch((e) => {
+                        next({ name: "auth" })
+                    })
+            }
+        },
+        {
+            path: "/reviews",
+            name: "reviews",
+            component: () => import("@/views/ReviewsView.vue"),
+            beforeEnter: async (to, from, next) => {
+                await axios
+                    .get("/auth/me")
+                    .then((response) => {
+                        if (response.data.success) {
+                            next()
+                        } else {
+                            next({ name: "auth" })
+                        }
+                    })
+                    .catch((e) => {
+                        next({ name: "auth" })
+                    })
+            }
+        },
+        {
+            path: "/bookmark",
+            name: "bookmark",
+            component: () => import("@/views/BookmarkView.vue"),
+            beforeEnter: async (to, from, next) => {
+                await axios
+                    .get("/auth/me")
+                    .then((response) => {
+                        if (response.data.success) {
+                            next()
+                        } else {
+                            next({ name: "auth" })
+                        }
+                    })
+                    .catch((e) => {
+                        next({ name: "auth" })
+                    })
+            }
+        },
+        {
+            path: "/:pathMatch(.*)*",
+            name: "404",
+            component: () => import("@/views/404View.vue")
         }
     ],
     scrollBehavior() {

@@ -1,6 +1,6 @@
 <script setup>
 import BlockBorder from "@/components/App/BlockBorder.vue"
-import { useAuth } from "@/stores/useAuth.js"
+import { useAuth } from "@/stores/Auth/useAuth.js"
 import { ref, toRefs } from "vue"
 
 const auth = useAuth()
