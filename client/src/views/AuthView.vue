@@ -51,7 +51,11 @@ const password = ref("")
         @apply w-1/2 h-1/2 relative flex items-center justify-end rounded-xl overflow-hidden border border-dark-50;
 
         &-border {
-            @apply w-1/2 h-full group-hover:w-full z-10 shadow-3xl transition-all duration-300 hover:p-0;
+            @apply w-1/2 h-full group-hover:w-full z-10 shadow-3xl transition-all duration-300;
+
+            &:hover {
+                padding: 0 !important;
+            }
         }
 
         &-bg {
@@ -63,10 +67,22 @@ const password = ref("")
 
             &-title {
                 @apply text-3xl group-hover:scale-150 transition-all duration-300 font-medium text-white;
+
+                @screen 2xl {
+                    @apply text-4xl;
+                }
+
+                h1 {
+                    @apply select-none;
+                }
             }
 
             &-body {
                 @apply w-4/6 group-hover:w-1/2 transition-all duration-300 relative;
+
+                @screen 2xl {
+                    @apply text-xl;
+                }
 
                 .error {
                     @apply w-full justify-center text-red flex items-center gap-3 mt-0;
@@ -84,6 +100,10 @@ const password = ref("")
 
                     i {
                         @apply text-xl absolute text-dark-icon left-3;
+
+                        @screen 2xl {
+                            @apply text-2xl;
+                        }
                     }
                 }
 
@@ -98,6 +118,10 @@ const password = ref("")
 
             &-btn {
                 @apply w-1/2 group-hover:w-5/12 transition-all duration-300;
+
+                @screen 2xl {
+                    @apply text-xl;
+                }
 
                 button {
                     @apply w-full py-3 px-5 rounded-md outline-none bg-dark-300 hover:bg-blue transition-all duration-300;
